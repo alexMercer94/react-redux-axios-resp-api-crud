@@ -1,14 +1,19 @@
 {
-    "books": [
-        {
-            "id": 1,
-            "name": "Aprendiendo Redux",
-            "price": 30
-        },
-        {
-            "id": 2,
-            "name": "React y Redux",
-            "price": 40
-        }
-    ]
+  "books": [
+    {
+      "id": 1,
+      "name": "Aprendiendo Redux",
+      "price": 30
+    },
+    {
+      "id": 2,
+      "name": "React y Redux",
+      "price": 40
+    },
+    {
+      "name": "Aprediendo React",
+      "price": "55",
+      "id": 3
+    }
+  ]
 }

@@ -1,24 +1,46 @@
 import React, { useState } from 'react';
 
-const NewProduct = () => {
+// Redux
+import { createNewProductAction } from '../redux/actions/productsActions';
+import { validateFormAction, successValidation, errorValidation } from '../redux/actions/validationActions';
+import { useDispatch, useSelector } from 'react-redux';
+
+const NewProduct = ({ history }) => {
     // state
     const [name, saveName] = useState('');
     const [price, savePrice] = useState('');
+
+    // Create new product
+    const dispatch = useDispatch();
+    const addProduct = product => dispatch(createNewProductAction(product));
+    const validateForm = () => dispatch(validateFormAction());
+    const validationSuccess = () => dispatch(successValidation());
+    const validationError = () => dispatch(errorValidation());
+
+    // Obetener los datos del State Global
+    const error = useSelector(state => state.error.error);
 
     // Add new product
     const submitNewProduct = e => {
         e.preventDefault();
 
         // Validar el formulario
+        validateForm();
         if (name.trim() === '' || price.trim() === '') {
+            validationError();
             return;
         }
 
         // Si pasa la validación
-
+        validationSuccess();
         // Crear el nuevo producto
+        addProduct({
+            name,
+            price
+        });
 
         // Redireccionar
+        history.push('/');
     };
 
     return (
@@ -56,6 +78,11 @@ const NewProduct = () => {
                                 Agregar
                             </button>
                         </form>
+                        {error ? (
+                            <div className="font-weight-bold alert alert-danger text-center mt-4">
+                                Todos los campos son obligatorios
+                            </div>
+                        ) : null}
                     </div>
                 </div>
             </div>
