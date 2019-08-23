@@ -1,4 +1,11 @@
-import { ADD_PRODUCT, ADD_PRODUCT_SUCCESS, ADD_PRODUCT_ERROR } from '../types';
+import {
+    ADD_PRODUCT,
+    ADD_PRODUCT_SUCCESS,
+    ADD_PRODUCT_ERROR,
+    START_DOWNLOAD_PRODUCTS,
+    DOWNLOAD_PRODUCTS_ERROR,
+    DOWNLOAD_PRODUCTS_SUCCESS
+} from '../types';
 import axiosClient from '../../config/axios';
 
 //Crear un nuevo producto - funcion principal
@@ -33,4 +40,15 @@ export const addProductSuccess = product => ({
 
 export const addProductError = error => ({
     type: ADD_PRODUCT_ERROR
+});
+
+// TODO: Get products List (FETCH API)
+export function getProductsAction() {
+    return dispatch => {
+        dispatch(startGetProducts());
+    };
+}
+
+export const startGetProducts = () => ({
+    type: START_DOWNLOAD_PRODUCTS
 });

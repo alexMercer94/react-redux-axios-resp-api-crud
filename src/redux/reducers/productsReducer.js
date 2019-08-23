@@ -1,4 +1,11 @@
-import { ADD_PRODUCT, ADD_PRODUCT_SUCCESS, ADD_PRODUCT_ERROR } from '../types';
+import {
+    ADD_PRODUCT,
+    ADD_PRODUCT_SUCCESS,
+    ADD_PRODUCT_ERROR,
+    START_DOWNLOAD_PRODUCTS,
+    DOWNLOAD_PRODUCTS_ERROR,
+    DOWNLOAD_PRODUCTS_SUCCESS
+} from '../types';
 
 // Cada reducer tiene su state
 
@@ -24,6 +31,26 @@ export default function(state = initialState, action) {
         case ADD_PRODUCT_ERROR:
             return {
                 ...state,
+                error: true
+            };
+
+        case START_DOWNLOAD_PRODUCTS:
+            return {
+                ...state,
+                loading: true
+            };
+        case DOWNLOAD_PRODUCTS_SUCCESS:
+            return {
+                ...state,
+                products: action.payload,
+                loading: false,
+                error: false
+            };
+        case DOWNLOAD_PRODUCTS_ERROR:
+            return {
+                ...state,
+                products: [],
+                loading: false,
                 error: true
             };
         default:

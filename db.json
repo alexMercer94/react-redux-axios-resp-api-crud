@@ -14,6 +14,11 @@
       "name": "Aprediendo React",
       "price": "55",
       "id": 3
+    },
+    {
+      "name": "Learnin Angular",
+      "price": "80",
+      "id": 4
     }
   ]
 }
