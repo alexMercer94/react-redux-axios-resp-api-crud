@@ -1,5 +1,7 @@
 # CRUD React Redux, Axios & Rest API
 
+![alt text](https://raw.githubusercontent.com/alexMercer94/react-redux-axios-resp-api-crud/master/CRUD.JPG)
+
 ## Node Modules:
 - redux
 - react-redux
